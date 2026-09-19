@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* LoanWise brand: a deep, calm teal. One primary colour, restrained accents. */
+  --color-brand-50: #effaf8;
+  --color-brand-100: #d7f2ed;
+  --color-brand-200: #b0e4db;
+  --color-brand-300: #7fcfc2;
+  --color-brand-400: #4bb3a5;
+  --color-brand-500: #2a978a;
+  --color-brand-600: #1d7a70;
+  --color-brand-700: #19635b;
+  --color-brand-800: #174f4a;
+  --color-brand-900: #15423e;
+  --color-brand-950: #0a2725;
+
+  --color-canvas: #f7f9f9;
+  --color-ink: #0f1f1d;
+
+  --shadow-card: 0 1px 2px rgb(15 31 29 / 0.04), 0 4px 16px -4px rgb(15 31 29 / 0.08);
+  --shadow-raised: 0 2px 4px rgb(15 31 29 / 0.05), 0 12px 32px -8px rgb(15 31 29 / 0.16);
+
+  --animate-fade-up: fade-up 0.35s ease-out both;
+  --animate-fade-in: fade-in 0.2s ease-out both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Clear, consistent keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide number spinners on currency inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
